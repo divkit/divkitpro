@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">DivKit.Pro Sample</string>
+
+    <string name="sample_settings">Settings</string>
+    <string name="sample_go">Go</string>
+    <string name="sample_request_url">Request URL</string>
+    <string name="sample_app_key">AppKey</string>
+    <string name="sample_request_flags">Custom flags</string>
+    <string name="sample_request_interval">Request interval</string>
+    <string name="sample_request_immediately">Request immediately</string>
+    <string name="sample_request_data">Request data</string>
+    <string name="sample_type_url">Type URL</string>
+
+    <string name="request_url_key">request_url</string>
+    <string name="appkey_key">app_key</string>
+    <string name="request_flags_key">request_flags</string>
+    <string name="request_interval_key">request_interval</string>
+    <string name="request_immediately_key">request_immediately</string>
+    <string name="request_button_key">request_button</string>
+
+    <string name="request_url_default">https://api.divkit.pro/v1/publications</string>
+</resources>

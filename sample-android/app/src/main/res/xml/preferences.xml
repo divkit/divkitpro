@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="@string/request_url_key"
+        android:title="@string/sample_request_url"
+        android:defaultValue="@string/request_url_default"/>
+
+    <EditTextPreference
+        android:key="@string/appkey_key"
+        android:title="@string/sample_app_key"/>
+
+    <EditTextPreference
+        android:key="@string/request_flags_key"
+        android:title="@string/sample_request_flags"/>
+
+    <EditTextPreference
+        android:key="@string/request_interval_key"
+        android:title="@string/sample_request_interval"
+        android:defaultValue="0"/>
+
+    <SwitchPreference
+        android:key="@string/request_immediately_key"
+        android:title="@string/sample_request_immediately"
+        android:defaultValue="true"/>
+
+    <Preference
+        android:key="@string/request_button_key"
+        android:title="@string/sample_request_data"/>
+
+</PreferenceScreen>

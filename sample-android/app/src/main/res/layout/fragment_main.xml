@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="8dp"
+    tools:context=".LauncherActivity">
+
+    <ImageView
+        android:id="@+id/settings_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="8dp"
+        android:src="@drawable/settings"
+        android:contentDescription="@string/sample_settings"/>
+
+    <EditText
+        android:id="@+id/omnibox_input"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_toEndOf="@id/settings_button"
+        android:layout_toStartOf="@id/omnibox_button"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/omnibox_background"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:inputType="textUri"
+        android:importantForAutofill="no"
+        android:hint="@string/sample_type_url"/>
+
+    <TextView
+        android:id="@+id/omnibox_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:background="@drawable/native_animation_background"
+        android:text="@string/sample_go"
+        android:textSize="24sp"
+        android:textColor="@color/divpro_blue"/>
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/omnibox_input"
+        android:layout_alignParentBottom="true"
+        android:layout_above="@id/omnibox_input"/>
+
+</RelativeLayout>

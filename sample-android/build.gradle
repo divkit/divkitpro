@@ -1,0 +1,29 @@
+apply from: "$projectDir/dependencies.gradle"
+
+ext {
+    minSdkVersion = 21
+    compileSdkVersion = 33
+    targetSdkVersion = 33
+    buildToolsVersion = "33.0.0"
+}
+
+buildscript {
+    apply from: "$projectDir/dependencies.gradle"
+
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+    }
+}
+
+wrapper {
+    gradleVersion "7.6.1"
+    distributionType = Wrapper.DistributionType.ALL
+    distributionUrl "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
