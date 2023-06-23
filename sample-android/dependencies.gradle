@@ -1,5 +1,5 @@
 ext.versions = [
-        divpro                          : '0.1.0',
+        divpro                          : '1.0.0',
         kotlin                          : '1.8.21',
 ]
 
