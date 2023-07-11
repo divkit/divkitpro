@@ -1,4 +1,5 @@
 import Foundation
+import BasePublic
 
 final class UserDefaultsStorage {
   private let userDefaults: UserDefaults
@@ -25,9 +26,18 @@ final class UserDefaultsStorage {
     }
   }
 
-  private func set(value: String, forKey: String) {
-    userDefaults.set(value, forKey: forKey)
-    userDefaults.synchronize()
+  var testEnviromnent: Bool {
+    get {
+      userDefaults.bool(forKey: keyTestEnviromnent) 
+    }
+    set {
+      set(value: newValue, forKey: keyTestEnviromnent)
+    }
+  }
+
+  private func set<T: KeyValueDirectStoringSupporting>(value: T, forKey: String) {
+      userDefaults.set(value, forKey: forKey)
+      userDefaults.synchronize()
   }
 }
 
@@ -35,3 +45,4 @@ private let defaultServerUrl = "https://api.divkit.pro/v1/publications/"
 
 private let keyServerUrl = "keyServerUrl"
 private let keyAppKey = "keyAppKey"
+private let keyTestEnviromnent = "keyTestEnviromnent"

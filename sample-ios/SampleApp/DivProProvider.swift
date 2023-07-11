@@ -38,6 +38,7 @@ final class DivProProvider {
       appKey: storage.appKey,
       appVersion: appVersion,
       flags: ["one", "two"],
+      testEnvironment: storage.testEnviromnent,
       url: storage.serverURL
     )
   }

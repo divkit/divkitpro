@@ -12,6 +12,7 @@ final class SettingsViewController: UIViewController {
   private let appKeyLabel = UILabel()
   private let appKeyInput = UITextField()
   private let requestButton = UIButton(type: .system)
+  private let testSwitch = SwitcherWithTitle(title: "Test environment")
 
   init(
     divProProvider: DivProProvider,
@@ -57,6 +58,12 @@ final class SettingsViewController: UIViewController {
     appKeyInput.returnKeyType = .done
     appKeyInput.delegate = self
 
+    testSwitch.setSwitchIsOn(storage.testEnviromnent)
+    testSwitch.onChange = { [weak self] isOn in
+      self?.storage.testEnviromnent = isOn
+      self?.divProProvider.resetIfNeeded()
+    }
+
     requestButton.setTitle("Request data", for: .normal)
     requestButton.addTarget(self, action: #selector(requestData(_:)), for: .touchUpInside)
     requestButton.contentHorizontalAlignment = .left
@@ -67,6 +74,7 @@ final class SettingsViewController: UIViewController {
     view.addSubview(serverUrlInput)
     view.addSubview(appKeyLabel)
     view.addSubview(appKeyInput)
+    view.addSubview(testSwitch)
     view.addSubview(requestButton)
 
     let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -116,9 +124,15 @@ final class SettingsViewController: UIViewController {
       width: frame.width - 40,
       height: 30
     )
-    requestButton.frame = CGRect(
+    testSwitch.frame = CGRect(
       x: positionX,
       y: appKeyInput.frame.maxY + 20,
+      width: frame.width - 40,
+      height: 30
+    )
+    requestButton.frame = CGRect(
+      x: positionX,
+      y: testSwitch.frame.maxY + 20,
       width: frame.width - 40,
       height: 30
     )
@@ -151,5 +165,65 @@ extension SettingsViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     dismissKeyboard()
     return true
+  }
+}
+
+private class SwitcherWithTitle: UIView {
+  var onChange: ((Bool) -> Void)? = nil
+  private let switcher = UISwitch()
+  private let label: UILabel = {
+    let label = UILabel()
+    label.textColor = .black
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.numberOfLines = 0
+    label.textAlignment = .left
+    return label
+  }()
+
+  init(
+    title: String
+  ) {
+    super.init(frame: .zero)
+
+    label.text = title
+    switcher.addTarget(self, action: #selector(self.switchStateDidChange(_:)), for: .valueChanged)
+
+    addSubview(label)
+    addSubview(switcher)
+  }
+
+  func setSwitchIsOn(_ value: Bool) {
+    switcher.isOn = value
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+  }
+
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    label.frame = CGRect(
+      x: bounds.minX,
+      y: bounds.minY,
+      width: bounds.width - 60,
+      height: 30
+    )
+    switcher.frame = CGRect(
+      x: bounds.maxX - 60,
+      y: bounds.minY,
+      width: 60,
+      height: 30
+    )
+  }
+
+  @objc func switchStateDidChange(_ sender: UISwitch!) {
+    guard let onChange = onChange else {
+      return
+    }
+    onChange(sender.isOn)
   }
 }

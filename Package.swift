@@ -11,14 +11,14 @@ let package = Package(
     .library(name: "DivKitPro", targets: ["WrapperForDivKitPro"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/airbnb/lottie-ios.git", from: "3.5.0"),
-    .package(url: "https://github.com/divkit/divkit-ios.git", from: "25.4.0"),
+    .package(url: "https://github.com/airbnb/lottie-ios.git", from: "4.2.0"),
+    .package(url: "https://github.com/divkit/divkit-ios.git", from: "26.0.0"),
   ],
   targets: [
     .binaryTarget(
       name: "DivKitPro",
-      url: "https://div-storage.s3.yandex.net/releases/DivKitPro.xcframework_1.0.0.zip",
-      checksum: "61c81fbd143c5e3f15f232584e149b83749efc73d2ed49b49df0e9157a6aea37"
+      url: "https://div-storage.s3.yandex.net/releases/DivKitPro.xcframework_1.1.0.zip",
+      checksum: "14cd6bad3500cc8f127a0a6e6ca04ffdf65edb1809b7a57d6df0c6fe42520e65"
     ),
     .target(
       name: "WrapperForDivKitPro",
