@@ -10,6 +10,17 @@ For installing the framework to your project with <a href="https://www.swift.org
 https://github.com/divkit/divkitpro.git
 ```
 
+Add `DivKitPro` pod into your application `Podfile` to install DivKitPro using CocoaPods:
+```
+source 'https://github.com/divkit/divkit-ios.git'
+source 'https://github.com/divkit/divkitpro.git'
+
+target 'MyApp' do
+  use_frameworks!
+  pod 'DivKitPro'
+end
+```
+
 ## Using DivKitPro
 
 For initialization of the framework in your project create an object with parameters:
